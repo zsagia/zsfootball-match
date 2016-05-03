@@ -1,0 +1,29 @@
+{namespace ZsFootballMatch}
+
+/**
+ * This renders the main element.
+ * @param? elementClasses
+ * @param match
+ * @param viewType
+ */
+{template .render}
+	{switch $viewType}
+		{case 1}
+			{call .renderRowView_}
+				{param elementClasses: $elementClasses /}
+				{param match: $match /}
+			{/call}
+	{/switch}
+{/template}
+
+/**
+ * @param? elementClasses
+ * @param match
+ */
+{template .renderRowView_}
+	<tr class="zsfootball-match{$elementClasses ? ' ' + $elementClasses : ''}">
+		<td class="home-club">{$match.homeClub}</td>
+		<td class="result">{$match.homeGoals} - {$match.awayGoals}</td>
+		<td class="away-club">{$match.awayClub}</td>
+	</tr>
+{/template}

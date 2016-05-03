@@ -8,8 +8,7 @@
     "node": ">=0.12.0",
     "npm": ">=3.0.0"
   },
-  "main": "src/ZsFootballMatch.js",
-  "browser": "src/ZsFootballMatch.js",
+  "main": "src/all/match.js",
   "files": [
     "lib",
     "src",

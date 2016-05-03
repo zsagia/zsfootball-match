@@ -1,9 +1,9 @@
 {
-  "name": "metal-zsFootballMatch",
+  "name": "zsfootball-match",
   "version": "0.0.0",
   "description": "zsfootball",
   "license": "BSD",
-  "repository": "zsagia/metal-zsFootballMatch",
+  "repository": "zsagia/zsfootball-match",
   "engines": {
     "node": ">=0.12.0",
     "npm": ">=3.0.0"

@@ -9,9 +9,7 @@
     "npm": ">=3.0.0"
   },
   "main": "src/ZsFootballMatch.js",
-  "browser": "src/ZsFootballMatch.js",
   "files": [
-    "lib",
     "src",
     "test"
   ],

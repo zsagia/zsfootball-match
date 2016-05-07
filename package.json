@@ -25,7 +25,7 @@
     "bootstrap": "^3.3.6",
     "metal-component": "metal/metal-component#master",
     "metal-soy": "metal/metal-soy#master",
-    "zsfootball-models": "^0.1.2"
+    "zsfootball-models": "^0.2.2"
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",

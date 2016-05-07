@@ -1,11 +1,20 @@
 .zsfootball-match {
-	.away-club {
-		text-align: left;
-	}
-	.home-club {
-		text-align: right;
-	}
-	.result {
-		text-align: center;
-	}
-}
+		.away-club {
+			font-weight: bold;
+			text-align: left;
+			width: 40%;
+		}
+		.home-club {
+			font-weight: bold;
+			text-align: right;
+			width:40%;
+		}
+		.result {
+			font-weight: inherit;
+			text-align: center;
+			width: 10%;
+		}
+		match-date {
+			width: 10%;
+		}
+	} 

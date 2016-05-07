@@ -22,8 +22,10 @@
  */
 {template .renderRowView_}
 	<tr class="zsfootball-match{$elementClasses ? ' ' + $elementClasses : ''}">
+		<td class="match-date">{$match.localHourMinute}</td>
 		<td class="home-club">{$match.homeClub}</td>
 		<td class="result">{$match.homeGoals} - {$match.awayGoals}</td>
 		<td class="away-club">{$match.awayClub}</td>
+		<td class="attendance">{$match.attendance}</td>
 	</tr>
 {/template}

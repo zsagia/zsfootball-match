@@ -64,6 +64,10 @@ function $renderRowView_(opt_data, opt_ignored, opt_ijData) {
   ie_open('tr', null, null,
       'class', 'zsfootball-match' + (opt_data.elementClasses ? ' ' + opt_data.elementClasses : ''));
     ie_open('td', null, null,
+        'class', 'match-date');
+      itext((goog.asserts.assert((opt_data.match.localHourMinute) != null), opt_data.match.localHourMinute));
+    ie_close('td');
+    ie_open('td', null, null,
         'class', 'home-club');
       itext((goog.asserts.assert((opt_data.match.homeClub) != null), opt_data.match.homeClub));
     ie_close('td');
@@ -76,6 +80,10 @@ function $renderRowView_(opt_data, opt_ignored, opt_ijData) {
     ie_open('td', null, null,
         'class', 'away-club');
       itext((goog.asserts.assert((opt_data.match.awayClub) != null), opt_data.match.awayClub));
+    ie_close('td');
+    ie_open('td', null, null,
+        'class', 'attendance');
+      itext((goog.asserts.assert((opt_data.match.attendance) != null), opt_data.match.attendance));
     ie_close('td');
   ie_close('tr');
 }

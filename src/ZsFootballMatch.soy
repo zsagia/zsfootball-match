@@ -8,6 +8,11 @@
  */
 {template .render}
 	{switch $viewType}
+		{case 0}
+			{call .renderRowView_}
+				{param elementClasses: $elementClasses /}
+				{param match: $match /}
+			{/call}
 		{case 1}
 			{call .renderRowView_}
 				{param elementClasses: $elementClasses /}
@@ -21,11 +26,21 @@
  * @param match
  */
 {template .renderRowView_}
-	<tr class="zsfootball-match{$elementClasses ? ' ' + $elementClasses : ''}">
+<table class="zsfootball-match{$elementClasses ? ' ' + $elementClasses : ''}" data-onclick="onRowClickHandler">
+	<tr class="zsfootball-match-row">
 		<td class="match-date">{$match.localHourMinute}</td>
 		<td class="home-club">{$match.homeClub}</td>
 		<td class="result">{$match.homeGoals} - {$match.awayGoals}</td>
 		<td class="away-club">{$match.awayClub}</td>
 		<td class="attendance">{$match.attendance}</td>
 	</tr>
+	<tr class="zsfootball-match-details hide">
+		<table>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</tr>
+</table>
 {/template}

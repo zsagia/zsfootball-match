@@ -1,4 +1,10 @@
-.zsfootball-match {
+table.zsfootball-match{
+	background-color: inherit;
+	
+	.zsfootball-match-details {
+	}
+
+	.zsfootball-match-row {
 		.away-club {
 			font-weight: bold;
 			text-align: left;
@@ -17,4 +23,17 @@
 		match-date {
 			width: 10%;
 		}
-	} 
+	}
+}
+
+table.zsfootball-match.selected {
+	background-color: inherit;
+	
+	.zsfootball-match-details {
+		height: 100px;
+
+		table {
+			width: 100% !important;
+		}
+	}
+}

@@ -42,6 +42,9 @@ var iattr = IncrementalDom.attr;
 function $render(opt_data, opt_ignored, opt_ijData) {
   var $$temp;
   switch ((goog.isObject($$temp = opt_data.viewType)) ? $$temp.toString() : $$temp) {
+    case 0:
+      $renderRowView_(opt_data, null, opt_ijData);
+      break;
     case 1:
       $renderRowView_(opt_data, null, opt_ijData);
       break;
@@ -61,39 +64,56 @@ if (goog.DEBUG) {
  * @suppress {checkTypes}
  */
 function $renderRowView_(opt_data, opt_ignored, opt_ijData) {
-  ie_open('tr', null, null,
-      'class', 'zsfootball-match' + (opt_data.elementClasses ? ' ' + opt_data.elementClasses : ''));
-    ie_open('td', null, null,
-        'class', 'match-date');
-      itext((goog.asserts.assert((opt_data.match.localHourMinute) != null), opt_data.match.localHourMinute));
-    ie_close('td');
-    ie_open('td', null, null,
-        'class', 'home-club');
-      itext((goog.asserts.assert((opt_data.match.homeClub) != null), opt_data.match.homeClub));
-    ie_close('td');
-    ie_open('td', null, null,
-        'class', 'result');
-      itext((goog.asserts.assert((opt_data.match.homeGoals) != null), opt_data.match.homeGoals));
-      itext(' - ');
-      itext((goog.asserts.assert((opt_data.match.awayGoals) != null), opt_data.match.awayGoals));
-    ie_close('td');
-    ie_open('td', null, null,
-        'class', 'away-club');
-      itext((goog.asserts.assert((opt_data.match.awayClub) != null), opt_data.match.awayClub));
-    ie_close('td');
-    ie_open('td', null, null,
-        'class', 'attendance');
-      itext((goog.asserts.assert((opt_data.match.attendance) != null), opt_data.match.attendance));
-    ie_close('td');
-  ie_close('tr');
+  ie_open('table', null, null,
+      'class', 'zsfootball-match' + (opt_data.elementClasses ? ' ' + opt_data.elementClasses : ''),
+      'data-onclick', 'onRowClickHandler');
+    ie_open('tr', null, null,
+        'class', 'zsfootball-match-row');
+      ie_open('td', null, null,
+          'class', 'match-date');
+        itext((goog.asserts.assert((opt_data.match.localHourMinute) != null), opt_data.match.localHourMinute));
+      ie_close('td');
+      ie_open('td', null, null,
+          'class', 'home-club');
+        itext((goog.asserts.assert((opt_data.match.homeClub) != null), opt_data.match.homeClub));
+      ie_close('td');
+      ie_open('td', null, null,
+          'class', 'result');
+        itext((goog.asserts.assert((opt_data.match.homeGoals) != null), opt_data.match.homeGoals));
+        itext(' - ');
+        itext((goog.asserts.assert((opt_data.match.awayGoals) != null), opt_data.match.awayGoals));
+      ie_close('td');
+      ie_open('td', null, null,
+          'class', 'away-club');
+        itext((goog.asserts.assert((opt_data.match.awayClub) != null), opt_data.match.awayClub));
+      ie_close('td');
+      ie_open('td', null, null,
+          'class', 'attendance');
+        itext((goog.asserts.assert((opt_data.match.attendance) != null), opt_data.match.attendance));
+      ie_close('td');
+    ie_close('tr');
+    ie_open('tr', null, null,
+        'class', 'zsfootball-match-details hide');
+      ie_open('table');
+        ie_open('tr');
+          ie_open('td');
+            itext('g1');
+          ie_close('td');
+          ie_open('td');
+            itext('g2');
+          ie_close('td');
+        ie_close('tr');
+      ie_close('table');
+    ie_close('tr');
+  ie_close('table');
 }
 exports.renderRowView_ = $renderRowView_;
 if (goog.DEBUG) {
   $renderRowView_.soyTemplateName = 'ZsFootballMatch.renderRowView_';
 }
 
-exports.render.params = ["elementClasses","match","viewType"];
-exports.render.types = {"elementClasses":"any","match":"any","viewType":"any"};
+exports.render.params = ["match","viewType","elementClasses"];
+exports.render.types = {"match":"any","viewType":"any","elementClasses":"any"};
 exports.renderRowView_.params = ["elementClasses","match"];
 exports.renderRowView_.types = {"elementClasses":"any","match":"any"};
 templates = exports;

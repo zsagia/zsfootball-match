@@ -4,15 +4,15 @@ import Soy from 'metal-soy/src/Soy';
 var templates;
 goog.loadModule(function(exports) {
 
-// This file was automatically generated from ZsFootballMatch.soy.
+// This file was automatically generated from Match.soy.
 // Please don't edit this file by hand.
 
 /**
- * @fileoverview Templates in namespace ZsFootballMatch.
+ * @fileoverview Templates in namespace Match.
  * @public
  */
 
-goog.module('ZsFootballMatch.incrementaldom');
+goog.module('Match.incrementaldom');
 
 /** @suppress {extraRequire} */
 var soy = goog.require('soy');
@@ -52,7 +52,7 @@ function $render(opt_data, opt_ignored, opt_ijData) {
 }
 exports.render = $render;
 if (goog.DEBUG) {
-  $render.soyTemplateName = 'ZsFootballMatch.render';
+  $render.soyTemplateName = 'Match.render';
 }
 
 
@@ -96,12 +96,8 @@ function $renderRowView_(opt_data, opt_ignored, opt_ijData) {
         'class', 'zsfootball-match-details hide');
       ie_open('table');
         ie_open('tr');
-          ie_open('td');
-            itext('g1');
-          ie_close('td');
-          ie_open('td');
-            itext('g2');
-          ie_close('td');
+          ie_void('td');
+          ie_void('td');
         ie_close('tr');
       ie_close('table');
     ie_close('tr');
@@ -109,7 +105,7 @@ function $renderRowView_(opt_data, opt_ignored, opt_ijData) {
 }
 exports.renderRowView_ = $renderRowView_;
 if (goog.DEBUG) {
-  $renderRowView_.soyTemplateName = 'ZsFootballMatch.renderRowView_';
+  $renderRowView_.soyTemplateName = 'Match.renderRowView_';
 }
 
 exports.render.params = ["match","viewType","elementClasses"];
@@ -121,8 +117,8 @@ return exports;
 
 });
 
-class ZsFootballMatch extends Component {}
-Soy.register(ZsFootballMatch, templates);
-export { ZsFootballMatch, templates };
+class Match extends Component {}
+Soy.register(Match, templates);
+export { Match, templates };
 export default templates;
 /* jshint ignore:end */

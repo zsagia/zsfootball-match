@@ -4,10 +4,10 @@ import core from 'metal';
 import {dom} from 'metal-dom';
 import Component from 'metal-component';
 import Soy from 'metal-soy';
-import {Match} from 'zsfootball-models';
-import templates from './ZsFootballMatch.soy';
+import {Match as MatchModel} from 'zsfootball-models';
+import templates from './Match.soy';
 
-class ZsFootballMatch extends Component  {
+class Match extends Component  {
 	/**
 	 *
 	 */
@@ -22,12 +22,12 @@ class ZsFootballMatch extends Component  {
 	 *
 	 */
 	setMatch_(value) {
-	 	return new Match(value);
+	 	return new MatchModel(value);
 	}
 }
-Soy.register(ZsFootballMatch, templates);
+Soy.register(Match, templates);
 
-ZsFootballMatch.STATE = {
+Match.STATE = {
 	/**
 	 *
 	 */
@@ -43,9 +43,9 @@ ZsFootballMatch.STATE = {
 	}
 }
 
-ZsFootballMatch.VIEW_TYPE = {
+Match.VIEW_TYPE = {
 	tableView: 0,
 	rowView: 1
 }
 
-export default ZsFootballMatch;
+export default Match;

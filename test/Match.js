@@ -1,8 +1,8 @@
 'use strict';
 
-import ZsFootballMatch from '../src/ZsFootballMatch';
+import Match from '../src/Match';
 
-describe('ZsFootballMatch', function() {
+describe('Match', function() {
 	it('should be tested', function() {
 		assert.fail('No tests for this module yet.');
 	});

@@ -3,7 +3,7 @@
 var metal = require('gulp-metal');
 
 metal.registerTasks({
-	bundleCssFileName: 'zsFootballMatch.css',
-	bundleFileName: 'zsFootballMatch.js',
+	bundleCssFileName: 'match.css',
+	bundleFileName: 'Match.js',
 	moduleName: 'zsfootball-match'
 });

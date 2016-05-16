@@ -8,20 +8,24 @@ table.zsfootball-match{
 		.away-club {
 			font-weight: bold;
 			text-align: left;
-			width: 40%;
+			width: 30%;
 		}
 		.home-club {
 			font-weight: bold;
 			text-align: right;
-			width:40%;
+			width:30%;
 		}
 		.result {
 			font-weight: inherit;
 			text-align: center;
 			width: 10%;
 		}
-		match-date {
-			width: 10%;
+		.match-date {
+			width: 15%;
+		}
+		.location {
+			text-align: left;
+			width: 15%
 		}
 	}
 }
@@ -34,6 +38,10 @@ table.zsfootball-match.selected {
 
 		table {
 			width: 100% !important;
+
+			tr {
+				text-align: center;
+			}
 		}
 	}
 }

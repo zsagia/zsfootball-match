@@ -9,6 +9,15 @@ import templates from './Match.soy';
 
 class Match extends Component  {
 	/**
+	 * Based on match date calculates a date string
+	 */
+	getLocalHourMinute_() {
+		var matchDate = new Date(this.match.matchDate);
+
+		return matchDate.getHours() + ':' + (matchDate.getMinutes() === 0 ? '00' : matchDate.getMinutes());
+	}
+
+	/**
 	 *
 	 */
 	onRowClickHandler(event) {
@@ -28,6 +37,14 @@ class Match extends Component  {
 Soy.register(Match, templates);
 
 Match.STATE = {
+	/**
+	 * It is a helper state for 'getLocalHourMinute_' method
+	 * @type {function()}
+	 */
+	localHourMinute: {
+		valueFn: 'getLocalHourMinute_'
+	},
+
 	/**
 	 *
 	 */

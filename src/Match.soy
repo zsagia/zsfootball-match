@@ -34,10 +34,10 @@
 	{let $goals: $match.goals /}
 	<tr class="zsfootball-match-row">
 		<td class="match-date">{$localHourMinute}</td>
-		<td class="home-club">{$match.homeClub}</td>
+		<td class="home-club">{$match.homeClub.title}</td>
 		<td class="result">
-			{$goals.homeGoals.firstHalf.length + $goals.homeGoals.secondHalf.length} - {$goals.awayGoals.firstHalf.length + $goals.awayGoals.secondHalf.length}</td>
-		<td class="away-club">{$match.awayClub}</td>
+			<span>{$goals.homeGoals.firstHalf.length + $goals.homeGoals.secondHalf.length} - {$goals.awayGoals.firstHalf.length + $goals.awayGoals.secondHalf.length}</span></td>
+		<td class="away-club">{$match.awayClub.title}</td>
 		<td class="location">{$match.location.name}</td>
 	</tr>
 	<tr class="zsfootball-match-details hide">

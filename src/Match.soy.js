@@ -1,6 +1,6 @@
 /* jshint ignore:start */
-import Component from 'metal-component/src/Component';
-import Soy from 'metal-soy/src/Soy';
+import Component from 'metal-component';
+import Soy from 'metal-soy';
 var templates;
 goog.loadModule(function(exports) {
 
@@ -76,17 +76,19 @@ function $renderRowView_(opt_data, opt_ignored, opt_ijData) {
       ie_close('td');
       ie_open('td', null, null,
           'class', 'home-club');
-        itext((goog.asserts.assert((opt_data.match.homeClub) != null), opt_data.match.homeClub));
+        itext((goog.asserts.assert((opt_data.match.homeClub.title) != null), opt_data.match.homeClub.title));
       ie_close('td');
       ie_open('td', null, null,
           'class', 'result');
-        itext((goog.asserts.assert((goals__soy18.homeGoals.firstHalf.length + goals__soy18.homeGoals.secondHalf.length) != null), goals__soy18.homeGoals.firstHalf.length + goals__soy18.homeGoals.secondHalf.length));
-        itext(' - ');
-        itext((goog.asserts.assert((goals__soy18.awayGoals.firstHalf.length + goals__soy18.awayGoals.secondHalf.length) != null), goals__soy18.awayGoals.firstHalf.length + goals__soy18.awayGoals.secondHalf.length));
+        ie_open('span');
+          itext((goog.asserts.assert((goals__soy18.homeGoals.firstHalf.length + goals__soy18.homeGoals.secondHalf.length) != null), goals__soy18.homeGoals.firstHalf.length + goals__soy18.homeGoals.secondHalf.length));
+          itext(' - ');
+          itext((goog.asserts.assert((goals__soy18.awayGoals.firstHalf.length + goals__soy18.awayGoals.secondHalf.length) != null), goals__soy18.awayGoals.firstHalf.length + goals__soy18.awayGoals.secondHalf.length));
+        ie_close('span');
       ie_close('td');
       ie_open('td', null, null,
           'class', 'away-club');
-        itext((goog.asserts.assert((opt_data.match.awayClub) != null), opt_data.match.awayClub));
+        itext((goog.asserts.assert((opt_data.match.awayClub.title) != null), opt_data.match.awayClub.title));
       ie_close('td');
       ie_open('td', null, null,
           'class', 'location');

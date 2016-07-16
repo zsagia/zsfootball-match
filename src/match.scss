@@ -2,9 +2,13 @@ table.zsfootball-match{
 	background-color: inherit;
 	
 	.zsfootball-match-details {
+		background-color: beige;
 	}
 
 	.zsfootball-match-row {
+		td {
+			padding: 5px;
+		}
 		.away-club {
 			font-weight: bold;
 			text-align: left;
@@ -19,12 +23,19 @@ table.zsfootball-match{
 			font-weight: inherit;
 			text-align: center;
 			width: 10%;
+			span {
+				background-color: beige;
+				cursor: pointer;
+				font-size: medium;
+				padding: 4px;
+			}
 		}
 		.match-date {
+			text-align: left;
 			width: 15%;
 		}
 		.location {
-			text-align: left;
+			text-align: right;
 			width: 15%
 		}
 	}

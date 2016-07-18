@@ -3,6 +3,7 @@
 /**
  * This renders the main element.
  * @param match
+ * @param localeDate
  * @param localHourMinute
  * @param viewType
  * @param? elementClasses
@@ -12,12 +13,14 @@
 		{case 0}
 			{call .renderRowView_}
 				{param elementClasses: $elementClasses /}
+				{param localeDate: $localeDate /}
 				{param localHourMinute: $localHourMinute /}
 				{param match: $match /}
 			{/call}
 		{case 1}
 			{call .renderRowView_}
 				{param elementClasses: $elementClasses /}
+				{param localeDate: $localeDate /}
 				{param localHourMinute: $localHourMinute /}
 				{param match: $match /}
 			{/call}
@@ -26,6 +29,7 @@
 
 /**
  * @param? elementClasses
+ * @param localeDate
  * @param localHourMinute
  * @param match
  */
@@ -43,6 +47,7 @@
 	<tr class="zsfootball-match-details hide">
 		<td colspan="5">
 			{call .renderDetails_}
+				{param localeDate: $localeDate /}
 				{param match: $match /}
 			{/call}
 		</td>
@@ -51,30 +56,79 @@
 {/template}
 
 /**
+ * @param localeDate
  * @param match
  */
 {template .renderDetails_}
 <table>
+	<tr class="header">
+		<td colspan="4">
+			<table>
+				<tr>
+					<td class="date">{$localeDate}</td>
+					<td class="referee">{$match.referee}</td>
+					<td class="attendance">Attendance: {$match.attendance}</td>
+					<td class="location">{$match.location.city}</td>
+				</tr>
+			</table>	
+		</td>
+	</tr>
 	{let $goals: $match.goals /}
-	<tr class="first-half">
-		<td class="first-half" colspan="3">
+	<tr class="first-half half">
+		<td colspan="5">
 			1. half
 		</td>
 	</tr>
-	<tr class="first-half">
-		<td class="first-half">
-			{$goals.homeGoals.firstHalf.length} - {$goals.awayGoals.firstHalf.length}
-		</td>
-	</tr>
-	<tr class="first-half" colspan="3">
-		<td class="first-half">
+	{call .renderGoals_}
+		{param halfGoals: $match.firstHalfGoals /}
+		{param homeGoals: $goals.homeGoals.firstHalf.length /}
+		{param awayGoals: $goals.awayGoals.firstHalf.length /}
+	{/call}
+	<tr class="second-half half">
+		<td colspan="5">
 			2. half
 		</td>
 	</tr>
-	<tr class="second-half">
-		<td class="first-half">
-			{$goals.homeGoals.secondHalf.length} - {$goals.awayGoals.secondHalf.length}
-		</td>
-	</tr>
+	{call .renderGoals_}
+		{param halfGoals: $match.secondHalfGoals /}
+		{param homeGoals: $goals.homeGoals.secondHalf.length /}
+		{param awayGoals: $goals.awayGoals.secondHalf.length /}
+	{/call}
 </table>
+{/template}
+
+/**
+ * @param halfGoals
+ * @param awayGoals
+ * @param homeGoals
+ */
+{template .renderGoals_}
+	{let $rowLength: $halfGoals.length /}
+	{foreach $goal in $halfGoals}
+		{let $columnIndex: index($goal) /}
+		{call .renderGoal_}
+			{param columnIndex: $columnIndex /}
+			{param goal: $goal /}
+			{param homeGoals: $homeGoals /}
+			{param awayGoals: $awayGoals /}
+			{param rowLength: $rowLength /}
+		{/call}
+	{/foreach}
+{/template}
+
+/**
+ * @param columnIndex
+ * @param goal
+ * @param homeGoals
+ * @param awayGoals
+ * @param rowLength
+ */
+{template .renderGoal_}
+	<tr>
+		<td colspan="2">{if $goal.goalType == 'homeGoal'}{$goal.time}' {$goal.player.fullName}{/if}</td>
+		{if $columnIndex == 0}
+			<td rowspan="{$rowLength}">{$homeGoals} - {$awayGoals} </td>
+		{/if}
+		<td colspan="2">{if $goal.goalType == 'awayGoal'}{$goal.time}' {$goal.player.fullName}{/if}</td>
+	</tr>
 {/template}

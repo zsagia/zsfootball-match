@@ -67,7 +67,7 @@ function $renderRowView_(opt_data, opt_ignored, opt_ijData) {
   ie_open('table', null, null,
       'class', 'zsfootball-match' + (opt_data.elementClasses ? ' ' + opt_data.elementClasses : ''),
       'data-onclick', 'onRowClickHandler');
-    var goals__soy18 = opt_data.match.goals;
+    var goals__soy20 = opt_data.match.goals;
     ie_open('tr', null, null,
         'class', 'zsfootball-match-row');
       ie_open('td', null, null,
@@ -81,9 +81,9 @@ function $renderRowView_(opt_data, opt_ignored, opt_ijData) {
       ie_open('td', null, null,
           'class', 'result');
         ie_open('span');
-          itext((goog.asserts.assert((goals__soy18.homeGoals.firstHalf.length + goals__soy18.homeGoals.secondHalf.length) != null), goals__soy18.homeGoals.firstHalf.length + goals__soy18.homeGoals.secondHalf.length));
+          itext((goog.asserts.assert((goals__soy20.homeGoals.firstHalf.length + goals__soy20.homeGoals.secondHalf.length) != null), goals__soy20.homeGoals.firstHalf.length + goals__soy20.homeGoals.secondHalf.length));
           itext(' - ');
-          itext((goog.asserts.assert((goals__soy18.awayGoals.firstHalf.length + goals__soy18.awayGoals.secondHalf.length) != null), goals__soy18.awayGoals.firstHalf.length + goals__soy18.awayGoals.secondHalf.length));
+          itext((goog.asserts.assert((goals__soy20.awayGoals.firstHalf.length + goals__soy20.awayGoals.secondHalf.length) != null), goals__soy20.awayGoals.firstHalf.length + goals__soy20.awayGoals.secondHalf.length));
         ie_close('span');
       ie_close('td');
       ie_open('td', null, null,
@@ -119,41 +119,50 @@ if (goog.DEBUG) {
  */
 function $renderDetails_(opt_data, opt_ignored, opt_ijData) {
   ie_open('table');
-    var goals__soy37 = opt_data.match.goals;
     ie_open('tr', null, null,
-        'class', 'first-half');
+        'class', 'header');
       ie_open('td', null, null,
-          'class', 'first-half',
-          'colspan', '3');
+          'colspan', '4');
+        ie_open('table');
+          ie_open('tr');
+            ie_open('td', null, null,
+                'class', 'date');
+              itext((goog.asserts.assert((opt_data.localeDate) != null), opt_data.localeDate));
+            ie_close('td');
+            ie_open('td', null, null,
+                'class', 'referee');
+              itext((goog.asserts.assert((opt_data.match.referee) != null), opt_data.match.referee));
+            ie_close('td');
+            ie_open('td', null, null,
+                'class', 'attendance');
+              itext('Attendance: ');
+              itext((goog.asserts.assert((opt_data.match.attendance) != null), opt_data.match.attendance));
+            ie_close('td');
+            ie_open('td', null, null,
+                'class', 'location');
+              itext((goog.asserts.assert((opt_data.match.location.city) != null), opt_data.match.location.city));
+            ie_close('td');
+          ie_close('tr');
+        ie_close('table');
+      ie_close('td');
+    ie_close('tr');
+    var goals__soy48 = opt_data.match.goals;
+    ie_open('tr', null, null,
+        'class', 'first-half half');
+      ie_open('td', null, null,
+          'colspan', '5');
         itext('1. half');
       ie_close('td');
     ie_close('tr');
+    $renderGoals_({halfGoals: opt_data.match.firstHalfGoals, homeGoals: goals__soy48.homeGoals.firstHalf.length, awayGoals: goals__soy48.awayGoals.firstHalf.length}, null, opt_ijData);
     ie_open('tr', null, null,
-        'class', 'first-half');
+        'class', 'second-half half');
       ie_open('td', null, null,
-          'class', 'first-half');
-        itext((goog.asserts.assert((goals__soy37.homeGoals.firstHalf.length) != null), goals__soy37.homeGoals.firstHalf.length));
-        itext(' - ');
-        itext((goog.asserts.assert((goals__soy37.awayGoals.firstHalf.length) != null), goals__soy37.awayGoals.firstHalf.length));
-      ie_close('td');
-    ie_close('tr');
-    ie_open('tr', null, null,
-        'class', 'first-half',
-        'colspan', '3');
-      ie_open('td', null, null,
-          'class', 'first-half');
+          'colspan', '5');
         itext('2. half');
       ie_close('td');
     ie_close('tr');
-    ie_open('tr', null, null,
-        'class', 'second-half');
-      ie_open('td', null, null,
-          'class', 'first-half');
-        itext((goog.asserts.assert((goals__soy37.homeGoals.secondHalf.length) != null), goals__soy37.homeGoals.secondHalf.length));
-        itext(' - ');
-        itext((goog.asserts.assert((goals__soy37.awayGoals.secondHalf.length) != null), goals__soy37.awayGoals.secondHalf.length));
-      ie_close('td');
-    ie_close('tr');
+    $renderGoals_({halfGoals: opt_data.match.secondHalfGoals, homeGoals: goals__soy48.homeGoals.secondHalf.length, awayGoals: goals__soy48.awayGoals.secondHalf.length}, null, opt_ijData);
   ie_close('table');
 }
 exports.renderDetails_ = $renderDetails_;
@@ -161,12 +170,81 @@ if (goog.DEBUG) {
   $renderDetails_.soyTemplateName = 'Match.renderDetails_';
 }
 
-exports.render.params = ["match","localHourMinute","viewType","elementClasses"];
-exports.render.types = {"match":"any","localHourMinute":"any","viewType":"any","elementClasses":"any"};
-exports.renderRowView_.params = ["elementClasses","localHourMinute","match"];
-exports.renderRowView_.types = {"elementClasses":"any","localHourMinute":"any","match":"any"};
-exports.renderDetails_.params = ["match"];
-exports.renderDetails_.types = {"match":"any"};
+
+/**
+ * @param {Object<string, *>=} opt_data
+ * @param {(null|undefined)=} opt_ignored
+ * @param {Object<string, *>=} opt_ijData
+ * @return {void}
+ * @suppress {checkTypes}
+ */
+function $renderGoals_(opt_data, opt_ignored, opt_ijData) {
+  var rowLength__soy61 = opt_data.halfGoals.length;
+  var goalList69 = opt_data.halfGoals;
+  var goalListLen69 = goalList69.length;
+  for (var goalIndex69 = 0; goalIndex69 < goalListLen69; goalIndex69++) {
+    var goalData69 = goalList69[goalIndex69];
+    var columnIndex__soy62 = goalIndex69;
+    $renderGoal_({columnIndex: columnIndex__soy62, goal: goalData69, homeGoals: opt_data.homeGoals, awayGoals: opt_data.awayGoals, rowLength: rowLength__soy61}, null, opt_ijData);
+  }
+}
+exports.renderGoals_ = $renderGoals_;
+if (goog.DEBUG) {
+  $renderGoals_.soyTemplateName = 'Match.renderGoals_';
+}
+
+
+/**
+ * @param {Object<string, *>=} opt_data
+ * @param {(null|undefined)=} opt_ignored
+ * @param {Object<string, *>=} opt_ijData
+ * @return {void}
+ * @suppress {checkTypes}
+ */
+function $renderGoal_(opt_data, opt_ignored, opt_ijData) {
+  ie_open('tr');
+    ie_open('td', null, null,
+        'colspan', '2');
+      if (opt_data.goal.goalType == 'homeGoal') {
+        itext((goog.asserts.assert((opt_data.goal.time) != null), opt_data.goal.time));
+        itext('\' ');
+        itext((goog.asserts.assert((opt_data.goal.player.fullName) != null), opt_data.goal.player.fullName));
+      }
+    ie_close('td');
+    if (opt_data.columnIndex == 0) {
+      ie_open('td', null, null,
+          'rowspan', opt_data.rowLength);
+        itext((goog.asserts.assert((opt_data.homeGoals) != null), opt_data.homeGoals));
+        itext(' - ');
+        itext((goog.asserts.assert((opt_data.awayGoals) != null), opt_data.awayGoals));
+        itext(' ');
+      ie_close('td');
+    }
+    ie_open('td', null, null,
+        'colspan', '2');
+      if (opt_data.goal.goalType == 'awayGoal') {
+        itext((goog.asserts.assert((opt_data.goal.time) != null), opt_data.goal.time));
+        itext('\' ');
+        itext((goog.asserts.assert((opt_data.goal.player.fullName) != null), opt_data.goal.player.fullName));
+      }
+    ie_close('td');
+  ie_close('tr');
+}
+exports.renderGoal_ = $renderGoal_;
+if (goog.DEBUG) {
+  $renderGoal_.soyTemplateName = 'Match.renderGoal_';
+}
+
+exports.render.params = ["match","localeDate","localHourMinute","viewType","elementClasses"];
+exports.render.types = {"match":"any","localeDate":"any","localHourMinute":"any","viewType":"any","elementClasses":"any"};
+exports.renderRowView_.params = ["elementClasses","localeDate","localHourMinute","match"];
+exports.renderRowView_.types = {"elementClasses":"any","localeDate":"any","localHourMinute":"any","match":"any"};
+exports.renderDetails_.params = ["localeDate","match"];
+exports.renderDetails_.types = {"localeDate":"any","match":"any"};
+exports.renderGoals_.params = ["halfGoals","awayGoals","homeGoals"];
+exports.renderGoals_.types = {"halfGoals":"any","awayGoals":"any","homeGoals":"any"};
+exports.renderGoal_.params = ["columnIndex","goal","homeGoals","awayGoals","rowLength"];
+exports.renderGoal_.types = {"columnIndex":"any","goal":"any","homeGoals":"any","awayGoals":"any","rowLength":"any"};
 templates = exports;
 return exports;
 

@@ -33,7 +33,7 @@
 				goals: {
 					awayGoals: {
 						firstHalf: [
-							{22: 'Walker K. (Rooney W.) (own goal)'}
+							{time: 22, player: 'Walker K.', ownGoal: true, assist: 'Rooney W.'}
 						],
 						secondHalf: []
 					},
@@ -43,8 +43,9 @@
 					}
 				},
 				homeClub: {title: 'Manchester United'},
-				location: {id: 6001, name: 'Old Trafford'},
+				location: {id: 6001, name: 'Old Trafford', city: 'Manchester'},
 				matchDate: 1439041500000,
+				referee: '',
 				round: 1,
 				type: {id: 1001, name: 'Premiere League'}
 			}
@@ -60,7 +61,7 @@
 						firstHalf: [],
 						secondHalf: [
 							{
-								72: '(Westwood A.) Gestede R.'
+								time: 72, player: 'Gestede R.', assist: 'Westwood A.'
 							}
 						]
 					},
@@ -72,7 +73,8 @@
 				homeClub: {title:'AFC Bournemouth'},
 				matchDate: 1439046000000,
 				round: 1,
-				location: {id: 6004, name: 'Vitality Stadium'},
+				referee: '',
+				location: {id: 6004, name: 'Vitality Stadium', city: 'Bournemouth'},
 				type: {id: 1001, name: 'Premiere League'}
 			}
 		}, "#section1 content");
@@ -81,29 +83,29 @@
 			match: {
 				id: 7103,
 				attendance: 27036,
-				awayClub: 'Crystal Palace',
+				awayClub: {title: 'Crystal Palace'},
 				goals: {
 					awayGoals: {
 						firstHalf: [
-							{39: '(Puncheon J.) Zaha W.'}
+							{time: 39, player: 'Zaha W.', assist: 'Puncheon J.'}
 						],
 						secondHalf: [
-							{49: '(Souare P.) Delaney D.'},
-							{94: '(McArthur J.) Cabaye Y.'}
+							{time: 49, player: 'Delaney D.', assist: 'Souare P.'},
+							{time: 94, player: 'Cabaye Y.', assist: 'McArthur J.'}
 						]
 					},
 					homeGoals: {
 						firstHalf: [],
 						secondHalf: [
-							{69: 'Redmond N. (Hoolahan W.)'}
+							{time: 69, player: 'Redmond N.', assist: 'Hoolahan W.'}
 						]
 					}
 				},
-				homeClub: 'Norwich City',
+				homeClub: {title: 'Norwich City'},
 				matchDate: 1439046000000,
 				round: 1,
 				referee: 'Simon Hooper',
-				location: {id: 6012, name: 'Carrow Road'},
+				location: {id: 6012, name: 'Carrow Road', city: 'Norwich'},
 				type: {id: 1001, name: 'Premiere League'}
 			}
 		}, "#section1 content");

@@ -4,7 +4,7 @@ import core from 'metal';
 import {dom} from 'metal-dom';
 import Component from 'metal-component';
 import Soy from 'metal-soy';
-import {Match as MatchModel} from 'zsfootball-models';
+import {MatchModel} from 'zsfootball-models';
 import templates from './Match.soy';
 
 class Match extends Component  {
@@ -12,9 +12,11 @@ class Match extends Component  {
 	 * Based on match date calculates a date string
 	 */
 	getLocalHourMinute_() {
-		var matchDate = new Date(this.match.matchDate);
+		return (new Date(this.match.matchDate)).toLocaleTimeString();
+	}
 
-		return matchDate.getHours() + ':' + (matchDate.getMinutes() === 0 ? '00' : matchDate.getMinutes());
+	toLocaleDateString_() {
+		return (new Date(this.match.matchDate)).toLocaleDateString();
 	}
 
 	/**
@@ -37,6 +39,10 @@ class Match extends Component  {
 Soy.register(Match, templates);
 
 Match.STATE = {
+	localeDate: {
+		valueFn: 'toLocaleDateString_'
+	},
+
 	/**
 	 * It is a helper state for 'getLocalHourMinute_' method
 	 * @type {function()}

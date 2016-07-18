@@ -3,6 +3,36 @@ table.zsfootball-match{
 	
 	.zsfootball-match-details {
 		background-color: beige;
+
+		tr.header {
+			border-bottom: 1px solid;
+    		background-color: darkgray;
+    		color: white;
+
+    		td {
+    			padding: 5px;
+    		}
+    		.date {
+    			text-align: left;
+    			width: 20%;
+    		}
+    		.referee {
+    			text-align: left;
+    			width: 20%
+    		}
+    		.location {
+    			text-align: right;
+    			width: 20%;
+    		}
+    		.attendance {
+    			text-align: left;
+    			width: 40%;
+    		}
+		}
+		tr.half {
+			background-color: dimgray;
+			color: white;
+		}
 	}
 
 	.zsfootball-match-row {

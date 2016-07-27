@@ -24,6 +24,15 @@
 
 		</content>
 	</section>
+
+	<section id="section2">
+		<header>
+			<h1>ZsFootball Matches</h1>
+		</header>
+		<content>
+
+		</content>
+	</section>
 	<script type="text/javascript">
 		new metal.Match({
 			match: {
@@ -109,6 +118,29 @@
 				type: {id: 1001, name: 'Premiere League'}
 			}
 		}, "#section1 content");
+
+		new metal.Match({
+			match: {
+				awayClub: {title: 'Hajdúszoboszló'},
+				goals: {
+					awayGoals: {
+						firstHalf: 1,
+						secondHalf: 2
+					},
+					homeGoals: {
+						firstHalf: 0,
+						secondHalf: 1
+					}
+				},
+				homeClub: {title: 'Hortobágy'},
+				matchDate: 1439046000000,
+				round: 1,
+				location: {city: 'Hortobágy'},
+				type: {name: 'Megye 3'}
+			},
+			viewType: 2
+		}, "#section2 content");
+
 	</script>
 </body>
 </html>

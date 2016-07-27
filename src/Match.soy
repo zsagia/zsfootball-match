@@ -18,10 +18,10 @@
 				{param match: $match /}
 			{/call}
 		{case 1}
-			{call .renderRowView_}
+			
+		{case 2}
+			{call .renderSimpleView_}
 				{param elementClasses: $elementClasses /}
-				{param localeDate: $localeDate /}
-				{param localHourMinute: $localHourMinute /}
 				{param match: $match /}
 			{/call}
 	{/switch}
@@ -51,6 +51,31 @@
 				{param match: $match /}
 			{/call}
 		</td>
+	</tr>
+</table>
+{/template}
+
+/**
+ * @param? elementClasses
+ * @param match
+ */
+{template .renderSimpleView_}
+<table class="zsfootball-match{$elementClasses ? ' ' + $elementClasses : ''}">
+	{let $goals: $match.goals /}
+	<tr class="zsfootball-match-row">
+		<td class="home-club">{$match.homeClub.title}</td>
+		<td class="result">
+			<span>
+			{if $goals}
+				{$goals.homeGoals.firstHalf + $goals.homeGoals.secondHalf}
+			{/if}
+			 - 
+			{if $goals}
+				{$goals.awayGoals.firstHalf + $goals.awayGoals.secondHalf}
+			{/if}
+			</span>
+		</td>
+		<td class="away-club">{$match.awayClub.title}</td>
 	</tr>
 </table>
 {/template}
@@ -104,6 +129,14 @@
  */
 {template .renderGoals_}
 	{let $rowLength: $halfGoals.length /}
+	{if $halfGoals.length == 0}
+		{call .renderGoal_}
+			{param columnIndex: 0 /}
+			{param homeGoals: 0 /}
+			{param awayGoals: 0 /}
+			{param rowLength: $rowLength /}
+		{/call}
+	{/if}
 	{foreach $goal in $halfGoals}
 		{let $columnIndex: index($goal) /}
 		{call .renderGoal_}
@@ -118,17 +151,17 @@
 
 /**
  * @param columnIndex
- * @param goal
+ * @param? goal
  * @param homeGoals
  * @param awayGoals
  * @param rowLength
  */
 {template .renderGoal_}
-	<tr>
-		<td colspan="2">{if $goal.goalType == 'homeGoal'}{$goal.time}' {$goal.player.fullName}{/if}</td>
+	<tr class="goals">
+		<td class="home-goal-scoorer" colspan="2">{if $homeGoals > 0 and $goal.goalType == 'homeGoal'}{$goal.time}' {$goal.player.fullName}{/if}</td>
 		{if $columnIndex == 0}
-			<td rowspan="{$rowLength}">{$homeGoals} - {$awayGoals} </td>
+			<td class="result" rowspan="{$rowLength}">{$homeGoals} - {$awayGoals} </td>
 		{/if}
-		<td colspan="2">{if $goal.goalType == 'awayGoal'}{$goal.time}' {$goal.player.fullName}{/if}</td>
+		<td class="away-goal-scoorer" colspan="2">{if $awayGoals > 0 and $goal.goalType == 'awayGoal'}{$goal.time}' {$goal.player.fullName}{/if}</td>
 	</tr>
 {/template}

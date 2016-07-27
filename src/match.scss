@@ -18,7 +18,7 @@ table.zsfootball-match{
     		}
     		.referee {
     			text-align: left;
-    			width: 20%
+    			width: 20%;
     		}
     		.location {
     			text-align: right;
@@ -33,6 +33,20 @@ table.zsfootball-match{
 			background-color: dimgray;
 			color: white;
 		}
+		tr.goals {
+			td {
+				padding: 5px 0;
+			}
+			.home-goal-scoorer {
+				width: 10%;
+			}
+			.away-goal-scoorer {
+				width: 20%;
+			}
+			.result {
+				width: 10%;
+			}
+		}
 	}
 
 	.zsfootball-match-row {
@@ -40,11 +54,13 @@ table.zsfootball-match{
 			padding: 5px;
 		}
 		.away-club {
+			font-size: medium;
 			font-weight: bold;
 			text-align: left;
 			width: 30%;
 		}
 		.home-club {
+			font-size: medium;
 			font-weight: bold;
 			text-align: right;
 			width:30%;

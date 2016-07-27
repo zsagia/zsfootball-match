@@ -62,13 +62,14 @@ Match.STATE = {
 	 *
 	 */
 	viewType: {
-		value: 1
+		value: 0
 	}
 }
 
 Match.VIEW_TYPE = {
 	tableView: 0,
-	rowView: 1
+	rowView: 1,
+	simpleView: 2
 }
 
 export default Match;
